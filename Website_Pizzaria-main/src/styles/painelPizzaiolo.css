@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: "Poppins", serif;
+    background-color: #1f1f2e;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: #f1f1f1;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../Dashboard/assets/images/background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #FCB03C;
+}
+
+.titulo-animado {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #FFF;
+    width: 0;
+    animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+.kanban-board {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.kanban-column {
+    background-color: #2a2a40;
+    border-radius: 10px;
+    width: 22%;
+    min-height: 500px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+.recebido {
+    background-color: #dc3545; 
+}
+
+.preparo {
+    background-color: #fd7e14; 
+}
+
+.pronto {
+    background-color: #32A639; 
+}
+
+.entrega {
+    background-color: #068587; 
+}
+
+.kanban-items {
+    margin-top: 15px;
+}
+
+.card-pedido {
+    background-image: url("/src/images/folder.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1), transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), background-color 0.6s ease;
+}
+
+.card-pedido p {
+    margin: 5px 0;
+    font-size: 14px;
+    margin-left: 15%;
+    color: rgb(44, 44, 44);
+}
+
+.card-pedido.mostrar {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.botoes {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botao-avancar {
+    background-color: #32A639;
+    width: 80px;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-voltar {
+    background-color: #dc3545;
+    width: 80px;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-avancar:hover {
+    background-color: #1e7e34;
+}
+
+.botao-voltar:hover {
+    background-color: #b02a37;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: #fd7e14;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #e66a00; 
+    transform: translateX(-5px);
+}
+
+.back-button i {
+    font-size: 1.2em;
+}
+
+
+/* Post-Its */
+.post-its {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.post-it {
+    background-color: #FFEB3B;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    animation: alternateMessages 5s infinite;
+}
+
+@keyframes alternateMessages {
+    0% { content: "Equipe, vamos manter o foco!"; }
+    33% { content: "Não se esqueçam de verificar os pedidos em atraso!"; }
+    66% { content: "Lembre-se: A satisfação do cliente é nossa prioridade!"; }
+}
+
+/* Card de Pedidos Entregues */
+.card-entregues {
+    background-color: #4CAF50;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 350px;
+    margin: 30px auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-entregues h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-entregues p {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.card-entregues:hover {
+    background-color: #45a049;
+    transform: translateY(-5px);
+}
+
+.postit {
+    margin-top: 50px;
+    background-color: #fffacc;
+    border-left: 5px solid #f0c000;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-style: italic;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    max-width: 240px;
+    text-align: center;
+    color: #1e1e2f;
+
+}
+
+.postits-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+

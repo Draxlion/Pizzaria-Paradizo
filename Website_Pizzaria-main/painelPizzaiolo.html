@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Pedidos - Pizzaiolo</title>
+    <link rel="stylesheet" href="src/styles/painelPizzaiolo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <div class="header-container">
+        <a href="Dashboard/dashboard.html" class="back-button"><i class="bi bi-arrow-left"></i> Voltar ao Dashboard</a>
+        <h1 class="titulo-animado">Painel de Produção - Pizzaiolo</h1>
+    </div>
+
+    <div class="kanban-board">
+        <div class="kanban-column recebido">
+            <h2>Recebido <i class="bi bi-chat-dots"></i></h2>
+            <div class="kanban-items" id="recebido"></div>
+        </div>
+
+        <div class="kanban-column preparo">
+            <h2>Em Preparo <i class="bi bi-hourglass-split"></i></h2>
+            <div class="kanban-items" id="preparo"></div>
+        </div>
+
+        <div class="kanban-column pronto">
+            <h2>Pronto <i class="bi bi-check-square"></i></h2>
+            <div class="kanban-items" id="pronto"></div>
+        </div>
+
+        <div class="kanban-column entrega">
+            <h2>Saiu Para Entrega <i class="bi bi-truck"></i></h2>
+            <div class="kanban-items" id="entrega"></div>
+        </div>
+    </div>
+
+    <!-- Post-Its Section -->
+    <div class="postits-container">
+        <div class="postit">
+            <p>"Pedido recebido! 🍕✨" <br>— Paradiso Team</p>
+        </div>
+        <div class="postit">
+            <p>"Preparando com carinho! 👩‍🍳💖" <br>— Paradiso Team</p>
+        </div>
+        <div class="postit">
+            <p>"Pizza pronta! ✅🍴" <br>— Paradiso Team</p>
+        </div>
+        <div class="postit">
+            <p>"Rumo à entrega! 🚗💨" <br>— Paradiso Team</p>
+        </div>
+    </div>
+
+    <script src="src/jsjavascript/painelPizzaiolo.js"></script>
+
+</body>
+
+</html>

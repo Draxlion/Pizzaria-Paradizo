@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciar Clientes - Pizza Paradiso</title>
+  <link rel="stylesheet" href="assets/css/gerenciamento.css"/>
+</head>
+<body>
+  <a href="dashboard.html" class="back-button">← Voltar</a>
+  <div class="container">
+    <h1>Cadastrar Clientes</h1>
+
+    <form id="clienteForm" class="client-form">
+      <h2>Cadastrar Novo Cliente</h2>
+      <input type="text" id="nome" placeholder="Nome completo" required />
+      <input type="email" id="email" placeholder="E-mail" required />
+      <input type="tel" id="telefone" placeholder="Telefone" required />
+      <textarea id="endereco" placeholder="Endereço completo" required></textarea>
+      <button type="submit" class="submit">Cadastrar</button>
+    </form>
+
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="clientesList">
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ordersModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrdersModal()">&times;</span>
+      <h2>Pedidos do Cliente</h2>
+      <ul id="ordersList">
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h2>Editar Cliente</h2>
+      <form id="editForm">
+        <input type="hidden" id="clienteId">
+        <input type="text" id="editNome" placeholder="Nome" required>
+        <input type="email" id="editEmail" placeholder="E-mail" required>
+        <input type="text" id="editTelefone" placeholder="Telefone" required>
+        <input type="text" id="editEndereco" placeholder="Endereço" required>
+        <select id="editStatus">
+          <option value="ativo">Ativo</option>
+          <option value="inativo">Inativo</option>
+        </select>
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/gerenciarClientes.js"></script>
+</body>
+</html>

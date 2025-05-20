@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Bebidas</title>
+  <link rel="stylesheet" href="assets/css/catalogo_bebidas.css"> 
+</head>
+<body>
+  <a href="dashboard.html" class="back-button">← Voltar</a>
+  <div class="container">
+    <h1>Catálogo de Bebidas</h1>
+    <div class="search-bar">
+      <button class="add-button" onclick="openAddModal()">Adicionar Bebida</button>
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-bebidas">
+        <!-- bebidas inseridas via JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal de Edição -->
+  <div id="editModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Editar Bebida</h2>
+      <label>Nome: <input type="text" id="editNome"></label>
+      <label>Descrição: <input type="text" id="editDescricao"></label>
+      <label>Preço: <input type="text" id="editPreco"></label>
+      <button id="salvarEdicao">Salvar</button>
+      <button onclick="closeEditModal()">Cancelar</button>
+    </div>
+  </div>
+  <div id="addModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Adicionar Nova Bebida</h2>
+      <label>Nome: <input type="text" id="addNome"></label>
+      <label>Descrição: <input type="text" id="addDescricao"></label>
+      <label>Preço: <input type="text" id="addPreco"></label>
+      <button onclick="adicionarBebida()">Salvar</button>
+      <button onclick="closeAddModal()">Cancelar</button>
+    </div>
+
+  <script src="assets/js/catalogo_bebidas.js"></script>
+</body>
+</html>

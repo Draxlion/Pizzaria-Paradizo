@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="src/images/logo.png">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Pizza Paradiso</title>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <i id="nav_logo">
+                <img src="src/images/logo.png" alt="">Pizza Paradiso
+            </i>
+
+            <ul id="nav_list">
+                <li class="nav_item active">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="nav_item">
+                    <a href="#menu">Catálogo</a>
+                </li>
+                <li class="nav_item">
+                    <a href="#testimonials">Avaliações</a>
+                </li>
+            </ul>
+
+            <a href="carrinhoCompras.html" style="text-decoration: none">
+                <button class="btn_default">Peça Aqui</button>
+                <button id="mobile_btn"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII=" /></button>
+            </a>
+        </nav>
+
+        <div id="mobile_menu">
+            <ul id="mobile_nav_list">
+                <li class="nav_item">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="nav_item">
+                    <a href="#menu">Catálogo</a>
+                </li>
+                <li class="nav_item">
+                    <a href="#testimonials">Avaliações</a>
+                </li>
+
+            </ul>
+            <a href="carrinhoCompras.html" style="text-decoration: none">
+                <button class="btn_default">Peça Aqui</button>
+                <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+            </a>
+        </div>
+
+    </header>
+
+    <main id="content">
+        <section id="home">
+            <div class="shape"></div>
+            <div id="cta">
+                <h1 class="title">
+                    A pizza de qualidade <span>você encontra aqui</span>
+                </h1>
+
+                <p class="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus repellat amet minima iste sed
+                    distinctio, neque commodi aliquid iure eius, architecto accusamus sequi facilis adipisci. Placeat
+                    modi recusandae ex quod.
+                </p>
+
+                <div id="cta_buttons">
+                    <a href="carrinhoCompras.html" class="btn_default">Ver catálogo</a>
+
+                    <a href="tel: +55 119111111" id="phone_button">
+                        <button class="btn_default">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQNJREFUSEvVlOERwUAQhV86oRJUgkpQCSpBJXRCvpnsTLL2ktyFMfZPZiTet/vu3lb6clVf1tfPAEdJM0lbSY8pU0YTXCQtG9GTpMMUiAe0xa3xvaRzKcQDngk7gDBJdnnAvfE+EiqC5ACukla5I3gAt2cTiHCT5rnifO8BiANpV7F4BOA3fw50XpyFKAfepqLDNQsiAAkmDzytoil4v6sP/lZ/SyDDSu0i/kjnVljEDTKrEGdSS3wyjH3LLkq17SYaMPHexA9t077gRZaQlc6CHAIgkspGyvbOpRgDQAhLyEj74D8KQAzP180zBXpbJ2Mn8N0CW7RgAMNdVQoYvZb+H/AC46swGfTkbMIAAAAASUVORK5CYII=" /></i>
+                        </button>
+                        (11) 92350-1354
+                    </a>
+                </div>
+
+                <div class="social_media_buttons">
+                    <a href="#">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUtJREFUSEvtlbFNBUEMROd3QQJdkEAXBFAGAaIKREAXQEAZJHQBBJSB3mlnNWes+9EPkL6l00n2eMcee+92OrDtDny+jgR7Fd6S6FTStaQzSS+S3stp++ILvCMg8UnSRTnwQdLj8BF7K/EvSVeSeE/rCEjkAIDPki6DjE54wDj+Ojq9H74VSSWg8psBPI9C8BFL46CU7U4SJBRwa2Al+JCERAAApiVJFyfPss3ikiAPOGnWI3VHnuzQcHcx55UElieHmTzuzr6VFMNJF+CQDglXW7QlT5J/j3nQBVLlHEwwO8wOTFCHZ2mclGvcSfWTS5IEBLBK0BHnPKqkxi9zTALvf2pr39Q0huKB5gWzRMD+EDiBICRUSUJ7Q0fMNx4MRThnFpkddJ+IbpC5Wd593rbVXOpFA0gVPJ/x7WmuxXRt5hx/OFvSLbH/L9Ev3KhaGTUC2+4AAAAASUVORK5CYII=" /></i>
+                    </a>
+                    <a href="#">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAW5JREFUSEvFlc1NBDEMhd82wRWoBLhwpwAEVAKIQoAyOAGV8HPhTAWwH/IbWRPPbFZotJFWq1Ecv5/YzkoLr9XC+bUzgANJF5KO4zcl9D02XiTdSvL3EF8puJR0HxEc4PDcggxEiH0IoEkAgt8i6ckW98O554i/yqTGCmCOgsNKbgF4Hoy/JZ1V5MYAsEdqxR7g/bUNsH0NO04lPUn6jD2rGM6PAX7iIDK9SIgyfM4LIneSviTtrVU/hk3E48Df6gGAFclvwg5XGN+ADMmCCEqHvJsAXFFOnhV4Dztcab7DWYCcbO7SXXFVfDfAdVgzVVXc2b8A8J47qCwyOAVBg7G6LCLYVeQK4t9dmi8Z73NJbw0Aq7kyJXmePxsBmkYJ6Z43R5HwI9mSK6tp1GpU4PuYWc9YclVli5tGc5DHRTN+J5CyjbkvygfHDZRnfc+4JiZXVDkq8vyhDO39HIDfDGZR83bs7MnsudSumMUV/AIe7GgZglVbgwAAAABJRU5ErkJggg==" /></i>
+                    </a>
+                    <a href="#">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALhJREFUSEvtlMENgzAQBJdOKIVSQiWESkgnCZWEUsJItuQH9sknW8qD+wAS2jnP2R7UuYbO+fo7wChpkTRJ4v04ny9Ja85EzQoI/F4EAZhbAOj82RPwDmpgfELXKCpWjSL0oIliJVnvKdELwDnuzbIAcbcQtCVphO/hG11ZVRaA0IfRZlFXC0BRlwWIh4pFMOA4ZJRELQDcilI76S5qNuQbUHVd3zMwr5XuiswOrn6wTrIr1Htdu2A/WHsqGQUWIeAAAAAASUVORK5CYII=" /></i>
+                    </a>
+                </div>
+            </div>
+            <div id="banner">
+                <img src="src/images/banner2.png" alt="">
+            </div>
+        </section>
+
+        <section id="menu">
+            <h2 class="section_title">Catálogo</h2>
+            <h3 class="section_subtitle">As mais pedidas</h3>
+
+            <section id="allbox">
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo1.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Calabresa</h3>
+
+                        <span class="boxs_description"> Molho tradicional, Calabresa fatiada seara, cebola em rodelas,
+                            azeitonas, finalizada com orégano
+                        </span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo2.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Marguerita</h3>
+
+                        <span class="boxs_description">Queijo coberto com tomates fatiados com um toque de manjericão e
+                            molho de tomate</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo3.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Calzone de Portuguesa</h3>
+
+                        <span class="boxs_description">muçarela, presunto, ovos de codorna, palmito, milho, bacon e
+                            orégano.</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo4.png" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Quatro Queijos</h3>
+
+                        <span class="boxs_description">Molho de tomate, muçarela, cremely, provolone, parmesão e
+                            azeite.</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <section id="allbox">
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo5.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Palmito</h3>
+
+                        <span class="boxs_description">Fatias de palmito, muçarela, molho de tomate fresco e orégano
+                        </span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo6.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Vegetariana</h3>
+
+                        <span class="boxs_description">Escarola, molho especial, tomate em rodelas, milho, palmito e
+                            muçarela</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo7.png" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Bacon</h3>
+
+                        <span class="boxs_description">Molho de tomate, catupiry, baicon frito, cebola roxa em fatia,
+                            azeitona e orégano</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="primary">
+                    <div class="boxs">
+                        <div class="boxs_heart">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                        </div>
+
+                        <img src="src/images/modelo8.jpg" class="boxs_image" alt="">
+
+                        <h3 class="boxs_title">Sardinha</h3>
+
+                        <span class="boxs_description">Azeite, sardinha, muçarela, pimentão verde, cebola, azeitona e
+                            orégano</span>
+
+                        <div class="boxs_rate">
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <i><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                            <span>(500+)</span>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </section>
+
+            <a href="carrinhoCompras.html"  style="text-decoration: none">
+                <button class="btn_default_menu">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEvt1T1LXFEQBuBnU6iNX0UwTRorC0HBXkRExBSiIhg769TxP2jnD7ATFEEQ7QRRIW3AjyIImlqRoIKNiB/3LGfDuu69u8JuEcw098KZed8578ycyamz5eqMr1qCT1jAcExoG3M4r5RgtQQrmC4BW8XXWhFco7UE7AZt/wxB3SWqSZF3MRA1PcMRfuIY+wiaF1s7+tGNPvSgMzoErMHwX9xFTxkFe0hAtjCPJnzHCD5kxOSxyxF8RC+64jf0/ucUoN/YwWHSsic4wGX0TSUoNxtBgtkk+FsMXkxIl6J8pdwFJd5EUAB5EZxyq/8EeWGy3rB3IFGQ4Arrsb9P8QO3KL5+c5zkML1hbsYRprtgr9o0AE6ktN4dNjEVzzcwioYU/7+7olyxOvAYsxvCDFpSgMKeWE7esD38wS9cFPtWs9Ea8SWZ2kmMxeC1KGFYnfdZS6cagkpLK/O87gTPCTNQGX8GyxgAAAAASUVORK5CYII="/> &nbsp;      
+                     Ver Catálogo Completo
+                </button>
+            </a>
+
+        </section>
+
+ 
+
+        <section id="testimonials">
+            <img src="src/images/colors2.png" id="testimonal_image" alt="">
+
+            <div id="testimonials_content">
+                <h2 class="section_title">
+                    Avaliações
+                </h2>
+                <h3 class="section_subtitle">
+                    O que os clientes falam sobre nós
+                </h3>
+
+                <div id="feedbacks">
+                    <div class="feedback">
+                        <img src="src/images/avatar.png" class="feedback_avatar" alt="">
+                        <div class="feedback_content">
+                            <p>
+                                Annie
+                                <span>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                </span>
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, inventore ipsam unde
+                                deleniti laborum, sint voluptatum error quam incidunt eum minus in temporibus mollitia
+                                exercitationem ea minima dicta quia debitis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feedback">
+                        <img src="src/images/avatar2.jpg" class="feedback_avatar" alt="">
+                        <div class="feedback_content">
+                            <p>
+                                Leona
+                                <span>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+
+                                </span>
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, inventore ipsam unde
+                                deleniti laborum, sint voluptatum error quam incidunt eum minus in temporibus mollitia
+                                exercitationem ea minima dicta quia debitis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feedback">
+                        <img src="src/images/avatar3.jpg" class="feedback_avatar" alt="">
+                        <div class="feedback_content">
+                            <p>
+                                Mordekaiser
+                                <span>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                    <i><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                                </span>
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, inventore ipsam unde
+                                deleniti laborum, sint voluptatum error quam incidunt eum minus in temporibus mollitia
+                                exercitationem ea minima dicta quia debitis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="btn_default">
+                        Ver mais avaliações
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <img src="src/images/wave.svg" alt="">
+
+        <div id="footer_items">
+            <span id="copyright">
+                &copy 2025 Bruna de Souza Gonçalves
+            </span>
+            <div class="social_media_buttons">
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUtJREFUSEvtlbFNBUEMROd3QQJdkEAXBFAGAaIKREAXQEAZJHQBBJSB3mlnNWes+9EPkL6l00n2eMcee+92OrDtDny+jgR7Fd6S6FTStaQzSS+S3stp++ILvCMg8UnSRTnwQdLj8BF7K/EvSVeSeE/rCEjkAIDPki6DjE54wDj+Ojq9H74VSSWg8psBPI9C8BFL46CU7U4SJBRwa2Al+JCERAAApiVJFyfPss3ikiAPOGnWI3VHnuzQcHcx55UElieHmTzuzr6VFMNJF+CQDglXW7QlT5J/j3nQBVLlHEwwO8wOTFCHZ2mclGvcSfWTS5IEBLBK0BHnPKqkxi9zTALvf2pr39Q0huKB5gWzRMD+EDiBICRUSUJ7Q0fMNx4MRThnFpkddJ+IbpC5Wd593rbVXOpFA0gVPJ/x7WmuxXRt5hx/OFvSLbH/L9Ev3KhaGTUC2+4AAAAASUVORK5CYII=" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAW5JREFUSEvFlc1NBDEMhd82wRWoBLhwpwAEVAKIQoAyOAGV8HPhTAWwH/IbWRPPbFZotJFWq1Ecv5/YzkoLr9XC+bUzgANJF5KO4zcl9D02XiTdSvL3EF8puJR0HxEc4PDcggxEiH0IoEkAgt8i6ckW98O554i/yqTGCmCOgsNKbgF4Hoy/JZ1V5MYAsEdqxR7g/bUNsH0NO04lPUn6jD2rGM6PAX7iIDK9SIgyfM4LIneSviTtrVU/hk3E48Df6gGAFclvwg5XGN+ADMmCCEqHvJsAXFFOnhV4Dztcab7DWYCcbO7SXXFVfDfAdVgzVVXc2b8A8J47qCwyOAVBg7G6LCLYVeQK4t9dmi8Z73NJbw0Aq7kyJXmePxsBmkYJ6Z43R5HwI9mSK6tp1GpU4PuYWc9YclVli5tGc5DHRTN+J5CyjbkvygfHDZRnfc+4JiZXVDkq8vyhDO39HIDfDGZR83bs7MnsudSumMUV/AIe7GgZglVbgwAAAABJRU5ErkJggg==" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALhJREFUSEvtlMENgzAQBJdOKIVSQiWESkgnCZWEUsJItuQH9sknW8qD+wAS2jnP2R7UuYbO+fo7wChpkTRJ4v04ny9Ja85EzQoI/F4EAZhbAOj82RPwDmpgfELXKCpWjSL0oIliJVnvKdELwDnuzbIAcbcQtCVphO/hG11ZVRaA0IfRZlFXC0BRlwWIh4pFMOA4ZJRELQDcilI76S5qNuQbUHVd3zMwr5XuiswOrn6wTrIr1Htdu2A/WHsqGQUWIeAAAAAASUVORK5CYII=" /></i>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="src/jsjavascript/script.js"></script>
+</body>
+
+</html>

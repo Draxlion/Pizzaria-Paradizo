@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas - Pizza Paradiso</title>
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="src/images/logo.png">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/header.css">
+    <link rel="stylesheet" href="src/styles/catalogo.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="src/jsjavascript/script.js"></script>
+
+</head>
+<header>
+    <nav id="navbar">
+        <i id="nav_logo">
+            <i class="bi bi-basket2-fill"></i> Meu Carrinho
+        </i>
+
+        <ul id="nav_list">
+            <li class="nav_item">
+                <a href="carrinhoCompras.html">Pizzas Salgadas</a>
+            </li>
+            <li class="nav_item">
+                <a href="PizzasDoces.html">Pizzas Doces</a>
+            </li>
+            <li class="nav_item active">
+                <a href="Bebidas.html">Bebidas</a>
+            </li>
+        </ul>
+
+        <a href="index.html" style="text-decoration: none">
+            <button class="btn_default">
+                <img src="src/images/exit.png">Voltar
+            </button>
+        </a>
+        <button id="mobile_btn"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII=" /></button>
+    </nav>
+
+    <div id="mobile_menu">
+        <ul id="mobile_nav_list">
+            <li class="nav_item">
+                <a href="carrinhoCompras.html">Pizzas Salgadas</a>
+            </li>
+            <li class="nav_item active">
+                <a href="PizzasDoces.html">PIzzas Doces</a>
+            </li>
+            <li class="nav_item">
+                <a href="Bebidas.html">Bebidas</a>
+            </li>
+        </ul>
+        <a href="index.html" style="text-decoration: none">
+            <button class="btn_default">
+                <img src="src/images/exit.png">Voltar
+            </button>
+        </a>
+        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+</header>
+
+<body>
+
+    <!-- sidebar -->
+    <div class="cart-sidebar">
+        <h2>Meu Carrinho</h2>
+        <ul class="cart-items">
+        </ul>
+        <div class="cart-total">
+            <strong>Total: R$ <span id="cart-total-value">0.00</span></strong>
+        </div>
+        <button class="btn_default" id="close-cart-sidebar">Fechar Carrinho</button>
+        <button class="btn_default" id="checkout-button">Finalizar Compra</button>
+    </div>
+
+    <button class="btn_default" id="open-cart-sidebar">
+        <i class="bi bi-cart-fill"></i> Ver Carrinho
+    </button>
+
+    <!-- Modal 1: Escolha de pagamento -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="payment-close-button">&times;</span>
+            <h2>Escolha a forma de pagamento:</h2>
+            <div class="payment-options">
+                <button type="button" class="pix">
+                    <i class="bi bi-qr-code"></i> Pix
+                </button>
+                <button type="button" class="vr">
+                    <i class="bi bi-badge-vr"></i> VR
+                </button>
+                <button type="button" class="debito">
+                    <i class="bi bi-credit-card-2-front-fill"></i> Débito
+                </button>
+                <button type="button" class="credito">
+                    <i class="bi bi-credit-card-fill"></i> Crédito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Novo Modal para PIX -->
+    <div id="pixModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="pix-close-button">&times;</span>
+            <h2>Pagamento via Pix</h2><br><br>
+            <p>Escaneie o código abaixo e realize o pagamento</p>
+            <img src="src/images/qr-code.png" class="qr_code" />
+            <p>Tempo restante: </p>
+            <img src="src/images/loading.gif" class="timer" alt="Aguardando pagamento" />
+        </div>
+    </div>
+
+
+
+
+
+    <!-- // bebidas // -->
+
+    <section id="menu">
+        <h2 class="section_title">BEBIDAS</h2>
+        <h3 class="section_subtitle">Geladas</h3>
+
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/2L/coca cola.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Coca-Cola 2L</h3>
+
+                    <span class="boxs_description">
+                        Coca-cola 2 litros.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 15,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/2L/coca zero.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Coca-cola Zero 2L</h3>
+
+                    <span class="boxs_description">
+                        Coca-cola Zero 2 litros.
+                    </span>
+
+
+                    <div class="boxs_rate">
+
+                        <br>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 17,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/2L/Pepsi.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Pepsi 2L</h3>
+
+                    <span class="boxs_description">
+                        Pepsi 2 litros.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 14,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/2L/sprite 2L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Sprite 2L</h3>
+
+                    <span class="boxs_description">
+                        Sprite 2 litros.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 17,50</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Cervejas/Antarctica 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Antarctica 1L</h3>
+
+                    <span class="boxs_description">
+                        Cerveja Antarctica 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 17,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Cervejas/Brahma 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Brahma 1L</h3>
+
+                    <span class="boxs_description">
+                        Cerveja Brahma 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 12,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Cervejas/Heineken 600 ml.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Heineken 600 ml</h3>
+
+                    <span class="boxs_description">
+                        Cerveja Heineken 600 ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 17,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Cervejas/budweiser 1 L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Budweiser 1 L</h3>
+
+                    <span class="boxs_description">
+                        Cerveja Budweiser 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 15,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </section>
+
+    <section id="menu">
+
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/lata 350 ml/guarana 350ml.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Guarana 350ml</h3>
+
+                    <span class="boxs_description">
+                        Guarana 350ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 06,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/lata 350 ml/coca cola 350 ml.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Coca-cola 350ml</h3>
+
+                    <span class="boxs_description">
+                        Coca-cola 350 ml.
+                    </span>
+
+
+                    <div class="boxs_rate">
+
+                        <br>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 08,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas//lata 350 ml/fanta laranja 350ml.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Fanta laranja 350ml</h3>
+
+                    <span class="boxs_description">
+                        Fanta laranja 350 ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 06,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/lata 350 ml/Refrigerante-Fanta-Uva-350ml.png" class="boxs_image"
+                        alt="">
+
+                    <h3 class="boxs_title">Fanta uva 350ml</h3>
+
+                    <span class="boxs_description">
+                        Fanta uva 350ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 06,50</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Del Valle laranja 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Del Valle laranja 1L</h3>
+
+                    <span class="boxs_description">
+                        Suco Del Valle laranja 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 13,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Del Valle Abacaxi 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Del Valle Abacaxi 1L</h3>
+
+                    <span class="boxs_description">
+                        Suco Del Valle Abacaxi 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 13,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Del Valle Maracuja 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Del Valle Maracuja 1L</h3>
+
+                    <span class="boxs_description">
+                        Suco Del Valle Maracuja 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 13,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Del Valle Uva 1L.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Del Valle Uva 1L</h3>
+
+                    <span class="boxs_description">
+                        Suco Del Valle Uva 1 litro.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 13,90</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </section>
+
+    <section id="menu">
+        <h2 class="section_title">SUCOS</h2>
+        <h3 class="section_subtitle">Preparados na hora</h3>
+
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Naturais/manga.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Suco natural manga</h3>
+
+                    <span class="boxs_description">
+                        Suco natural manga 550ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 15,00</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Naturais/Suco-Maracuja.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Suco natural maracuja</h3>
+
+                    <span class="boxs_description">
+                        Suco natural maracuja 550ml.
+                    </span>
+
+
+                    <div class="boxs_rate">
+
+                        <br>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 14,20</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Naturais/Suco_Laranja.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Suco natural laranja</h3>
+
+                    <span class="boxs_description">
+                        Suco natural laranja 550ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 13,50</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/Bebidas/Sucos/Naturais/Kiwi.png" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Suco natural kiwi</h3>
+
+                    <span class="boxs_description">
+                        Suco natural kiwi 550ml.
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 17,50</h4>
+                        <button class="btn_default boxs_price_button">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+
+    <footer>
+        <img src="src/images/wave.svg" alt="">
+
+        <div id="footer_items">
+            <span id="copyright">
+                &copy 2025 Bruna de Souza Gonçalves
+            </span>
+            <div class="social_media_buttons">
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUtJREFUSEvtlbFNBUEMROd3QQJdkEAXBFAGAaIKREAXQEAZJHQBBJSB3mlnNWes+9EPkL6l00n2eMcee+92OrDtDny+jgR7Fd6S6FTStaQzSS+S3stp++ILvCMg8UnSRTnwQdLj8BF7K/EvSVeSeE/rCEjkAIDPki6DjE54wDj+Ojq9H74VSSWg8psBPI9C8BFL46CU7U4SJBRwa2Al+JCERAAApiVJFyfPss3ikiAPOGnWI3VHnuzQcHcx55UElieHmTzuzr6VFMNJF+CQDglXW7QlT5J/j3nQBVLlHEwwO8wOTFCHZ2mclGvcSfWTS5IEBLBK0BHnPKqkxi9zTALvf2pr39Q0huKB5gWzRMD+EDiBICRUSUJ7Q0fMNx4MRThnFpkddJ+IbpC5Wd593rbVXOpFA0gVPJ/x7WmuxXRt5hx/OFvSLbH/L9Ev3KhaGTUC2+4AAAAASUVORK5CYII=" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAW5JREFUSEvFlc1NBDEMhd82wRWoBLhwpwAEVAKIQoAyOAGV8HPhTAWwH/IbWRPPbFZotJFWq1Ecv5/YzkoLr9XC+bUzgANJF5KO4zcl9D02XiTdSvL3EF8puJR0HxEc4PDcggxEiH0IoEkAgt8i6ckW98O554i/yqTGCmCOgsNKbgF4Hoy/JZ1V5MYAsEdqxR7g/bUNsH0NO04lPUn6jD2rGM6PAX7iIDK9SIgyfM4LIneSviTtrVU/hk3E48Df6gGAFclvwg5XGN+ADMmCCEqHvJsAXFFOnhV4Dztcab7DWYCcbO7SXXFVfDfAdVgzVVXc2b8A8J47qCwyOAVBg7G6LCLYVeQK4t9dmi8Z73NJbw0Aq7kyJXmePxsBmkYJ6Z43R5HwI9mSK6tp1GpU4PuYWc9YclVli5tGc5DHRTN+J5CyjbkvygfHDZRnfc+4JiZXVDkq8vyhDO39HIDfDGZR83bs7MnsudSumMUV/AIe7GgZglVbgwAAAABJRU5ErkJggg==" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALhJREFUSEvtlMENgzAQBJdOKIVSQiWESkgnCZWEUsJItuQH9sknW8qD+wAS2jnP2R7UuYbO+fo7wChpkTRJ4v04ny9Ja85EzQoI/F4EAZhbAOj82RPwDmpgfELXKCpWjSL0oIliJVnvKdELwDnuzbIAcbcQtCVphO/hG11ZVRaA0IfRZlFXC0BRlwWIh4pFMOA4ZJRELQDcilI76S5qNuQbUHVd3zMwr5XuiswOrn6wTrIr1Htdu2A/WHsqGQUWIeAAAAAASUVORK5CYII=" /></i>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

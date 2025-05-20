@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedidos em Atendimento</title>
+  <link rel="stylesheet" href="assets/css/pedidos_em_atendimento.css">
+</head>
+<body>
+  <a href="dashboard.html" class="back-button">← Voltar</a>
+  <div class="container">
+    <h1>Pedidos em Atendimento</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nº Pedido</th>
+          <th>ID Cliente</th>
+          <th>ID Pizza</th>
+          <th>Quantidade</th>
+          <th>Valor Total</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="pedido-body">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+
+    console.log('Pedidos no localStorage:', localStorage.getItem('pedidos'));
+  </script>
+  <script src="./assets/js/pedidos_em_atendimento.js"></script>
+</body>
+</html>

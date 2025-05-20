@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Realizado com Sucesso - Pizzaria Paradiso</title>
+    <link rel="stylesheet" href="src/styles/sucesso.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Pedido Realizado com Sucesso!</h1>
+            <p>Seu pedido foi recebido e está sendo preparado com carinho.</p>
+            <p class="order-number">Número do Pedido: <span id="pedidoNumero">#0000</span></p>
+            
+            <div class="order-summary">
+                <h2>Resumo do Pedido</h2>
+                <div id="orderItems">
+                    <!-- Itens do pedido serão inseridos aqui via JavaScript -->
+                </div>
+                <div class="order-total">
+                    <span>Total:</span>
+                    <span id="orderTotal">R$ 0,00</span>
+                </div>
+            </div>
+            
+            <p class="delivery-time">
+                <i class="fas fa-clock"></i> Tempo estimado de entrega: <strong>40-60 minutos</strong>
+            </p>
+            
+            <div class="actions">
+                <a href="index.html" class="btn btn-primary">Voltar para a Página Inicial</a>
+                <a href="meus-pedidos.html" class="btn btn-secondary">Acompanhar Pedido</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Recupera os dados do pedido do localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+            const ultimoPedido = pedidos[pedidos.length - 1];
+            
+            if (ultimoPedido) {
+                // Atualiza o número do pedido
+                document.getElementById('pedidoNumero').textContent = '#' + ultimoPedido.id;
+                
+                // Atualiza os itens do pedido
+                const orderItems = document.getElementById('orderItems');
+                let itemsHTML = '';
+                let total = 0;
+                
+                ultimoPedido.itens.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    itemsHTML += `
+                        <div class="order-item">
+                            <span class="item-name">${item.quantity}x ${item.name}</span>
+                            <span class="item-price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    `;
+                });
+                
+                orderItems.innerHTML = itemsHTML;
+                document.getElementById('orderTotal').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas Doces - Pizzaria Paradiso</title>
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="src/images/logo.png">
+    <link rel="stylesheet" href="src/styles/carrinho.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="src/jsjavascript/script.js"></script>
+
+</head>
+<header>
+    <nav id="navbar">
+        <i id="nav_logo">
+            <i class="bi bi-basket2-fill"></i> Meu Carrinho
+        </i>
+
+        <ul id="nav_list">
+            <li class="nav_item">
+                <a href="carrinhoCompras.html">Pizzas Salgadas</a>
+            </li>
+            <li class="nav_item active">
+                <a href="PizzasDoces.html">Pizzas Doces</a>
+            </li>
+            <li class="nav_item">
+                <a href="Bebidas.html">Bebidas</a>
+            </li>
+        </ul>
+
+        <a href="index.html" style="text-decoration: none">
+            <button class="btn_default">
+                <img src="src/images/exit.png">Voltar
+            </button>
+            <button id="mobile_btn"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII=" /></button>
+        </a>
+    </nav>
+
+    <div id="mobile_menu">
+        <ul id="mobile_nav_list">
+            <li class="nav_item">
+                <a href="carrinhoCompras.html">Pizzas Salgadas</a>
+            </li>
+            <li class="nav_item active">
+                <a href="PizzasDoces.html">PIzzas Doces</a>
+            </li>
+            <li class="nav_item">
+                <a href="Bebidas.html">Bebidas</a>
+            </li>
+        </ul>
+        <a href="index.html" style="text-decoration: none">
+            <button class="btn_default">
+                <img src="src/images/exit.png">Voltar
+            </button>
+            <button id="mobile_btn"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII=" /></button>
+        </a>
+        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+</header>
+
+<body>
+
+    <!-- sidebar -->
+    <div class="cart-sidebar">
+        <h2>Meu Carrinho</h2>
+        <ul class="cart-items">
+        </ul>
+        <div class="cart-total">
+            <strong>Total: R$ <span id="cart-total-value">0.00</span></strong>
+        </div>
+        <button class="btn_default" id="close-cart-sidebar">Fechar Carrinho</button>
+        <button class="btn_default" id="checkout-button">Finalizar Compra</button>
+    </div>
+
+    <button class="btn_default" id="open-cart-sidebar">
+        <i class="bi bi-cart-fill"></i> Ver Carrinho
+    </button>
+
+    <!-- modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Detalhes do Item</h3>
+            <div class="modal-body">
+                <p><b>Pizza:</b> <strong id="modal-item-name"></strong></p>
+                <br>
+
+                <div class="form-group">
+                    <label>Tamanho:</label>
+                    <div id="pizza-sizes">
+                        <button type="button" class="size-button" data-size="broto"
+                            data-multiplier="1.00">Broto</button>
+                        <button type="button" class="size-button" data-size="media" data-multiplier="1.03">Média
+                            (+3%)</button>
+                        <button type="button" class="size-button active" data-size="grande"
+                            data-multiplier="1.05">Grande (+5%)</button>
+                    </div>
+                    <input type="hidden" id="selected-pizza-size" value="grande">
+                    <input type="hidden" id="selected-size-multiplier" value="1.05">
+                </div>
+
+                <div class="form-group">
+                    <label>Adicionais:</label>
+                    <div id="additional-options">
+                        <label><input type="checkbox" name="additional" value="borda-recheada"> Borda Recheada (+R$
+                            5,00)</label><br>
+                        <label><input type="checkbox" name="additional" value="queijo-extra"> Queijo Extra (+R$
+                            3,00)</label><br>
+                        <label><input type="checkbox" name="additional" value="azeitonas-extras"> Azeitonas Extras (+R$
+                            2,00)</label><br>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-observations">Observações:</label>
+                    <textarea id="item-observations" rows="3"
+                        placeholder="Alguma observação para o seu pedido?"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn_default" id="add-to-cart-with-options">Adicionar ao Carrinho</button>
+                <button class="btn_default" id="cancel-add-to-cart">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1: Escolha de pagamento -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="payment-close-button">&times;</span>
+            <h2>Escolha a forma de pagamento:</h2>
+            <div class="payment-options">
+                <button type="button" class="pix">
+                    <i class="bi bi-qr-code"></i> Pix
+                </button>
+                <button type="button" class="vr">
+                    <i class="bi bi-badge-vr"></i> VR
+                </button>
+                <button type="button" class="debito">
+                    <i class="bi bi-credit-card-2-front-fill"></i> Débito
+                </button>
+                <button type="button" class="credito">
+                    <i class="bi bi-credit-card-fill"></i> Crédito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Novo Modal para PIX -->
+    <div id="pixModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="pix-close-button">&times;</span>
+            <h2>Pagamento via Pix</h2><br><br>
+            <p>Escaneie o código abaixo e realize o pagamento</p>
+            <img src="src/images/qr-code.png" class="qr_code" />
+            <p>Tempo restante: </p>
+            <img src="src/images/loading.gif" class="timer" alt="Aguardando pagamento" />
+        </div>
+    </div>
+
+    <!-- // doces //  -->
+    <section id="menu">
+        <h2 class="section_title">PIZZAS</h2>
+        <h3 class="section_subtitle">Doces</h3>
+
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo24.jpg" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Nutella com Morango</h3>
+
+                    <span class="boxs_description">
+                        Ingredientes: Nutella, morangos fatiados, chantilly, amêndoas trituradas
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 39,80</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo23.jpg" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Banana com Canela</h3>
+
+                    <span class="boxs_description">
+                        CBanana fatiada, açúcar mascavo, canela em pó, creme de leite
+                    </span>
+
+
+                    <div class="boxs_rate">
+
+                        <br>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 34,50</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo22.webp" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Framboesa</h3>
+
+                    <span class="boxs_description">
+                        Chocolate branco derretido, framboesas frescas, castanhas de caju picadas, mel
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 48,89</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo21.jpg" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Doce de Leite e Coco</h3>
+
+                    <span class="boxs_description">
+                        Doce de leite, coco ralado, calda de chocolate, chantilly
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 32,10</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <section id="allbox">
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo20.jpg" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Maçã com Caramelo</h3>
+
+                    <span class="boxs_description">
+                        Maçã fatiada, calda de caramelo, canela, nozes picadas
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 43,60</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo19.webp" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Chocolate Preto com Laranja</h3>
+
+                    <span class="boxs_description">
+                        Chocolate amargo, raspas de laranja, amêndoas, mel
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 53,20</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt=""></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo18.webp" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Morango com Creme de Leite</h3>
+
+                    <span class="boxs_description">
+                        Morangos frescos, creme de leite, açúcar de confeiteiro, menta para decorar
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 39,90</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="primary">
+                <div class="boxs">
+                    <div class="boxs_heart">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOxJREFUSEvFlesNwjAMhK+bwCTAJMAkwCTAJLAJbAK5yIlCa1KnclX/adXHfb5z2nSYubqZ9bEYYAtgD4DHt7i8A7jJ+QHApnI/B6M5eMiLWnpPuUiwVmzgUjQ1iKgmbh3XWSDx+dIBuyLAo44pzhJwDdaYrUcxKkJ+HHw8lEWDs9r1Aa9ga+UE4cpb9wGeEakOToHIFeBRjCcu6f534OEid68BOAMu1amzyNmnGLQveSpkIK45SOBWiCpeA/CeFfJXfAxggVTFLYAaZFTcCtAgJvEWQAnhefwNWKp1y+Tg0w5n0V9uTzZ1Z3noCxKfKhnGEJ4iAAAAAElFTkSuQmCC" /></i>
+                    </div>
+
+                    <img src="src/images/modelo17.jpg" class="boxs_image" alt="">
+
+                    <h3 class="boxs_title">Marshmallow e Chocolate</h3>
+
+                    <span class="boxs_description">
+                        Marshmallows, chocolate ao leite, calda de caramelo, granulado colorido
+                    </span>
+
+                    <div class="boxs_rate">
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <i><img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARFJREFUSEu1lYERwjAIRX830U10EnUSdRLdRDfRTdTvBQ9TSEBb7nrVtuFBPpABM9sws39kARcAdwC7aGAZwBbAqTheA7hGIBkAo18Vp3ROSNeiADomQFsoiyhARy+QUBYRwALAzdgLEbuphQbQ0QYA77xo+re134TQ6vtRnmmAtQ1dEZ0PCFzynQbsXw8Ov3qs1rFPzjWA/6eAfFWXJbJuqExCpuheFWUhbkW1ypRjgaCIuU3XAmSqisXB0hxZC/CIhF6+cbt6Sg3edV9bFiB9YvWLqYMHqAWuq4QjhBrJSGHgbKzRQeQBONxksSegzC7J5jMe9Da1MuAZwIh6JxdBzNg8SiPjOlFMcZH/cqoXPwEpvzYZ5BtIZQAAAABJRU5ErkJggg==" /></i>
+                        <span>(500+)</span>
+                    </div>
+
+                    <div class="boxs_price">
+                        <h4>R$ 35,00</h4>
+                        <button class="btn_default" id="pizza_item_add">
+                            <img src="src/images/add.png" alt="">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+
+    <footer>
+        <img src="src/images/wave.svg" alt="">
+
+        <div id="footer_items">
+            <span id="copyright">
+                &copy 2025 Bruna de Souza Gonçalves
+            </span>
+            <div class="social_media_buttons">
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUtJREFUSEvtlbFNBUEMROd3QQJdkEAXBFAGAaIKREAXQEAZJHQBBJSB3mlnNWes+9EPkL6l00n2eMcee+92OrDtDny+jgR7Fd6S6FTStaQzSS+S3stp++ILvCMg8UnSRTnwQdLj8BF7K/EvSVeSeE/rCEjkAIDPki6DjE54wDj+Ojq9H74VSSWg8psBPI9C8BFL46CU7U4SJBRwa2Al+JCERAAApiVJFyfPss3ikiAPOGnWI3VHnuzQcHcx55UElieHmTzuzr6VFMNJF+CQDglXW7QlT5J/j3nQBVLlHEwwO8wOTFCHZ2mclGvcSfWTS5IEBLBK0BHnPKqkxi9zTALvf2pr39Q0huKB5gWzRMD+EDiBICRUSUJ7Q0fMNx4MRThnFpkddJ+IbpC5Wd593rbVXOpFA0gVPJ/x7WmuxXRt5hx/OFvSLbH/L9Ev3KhaGTUC2+4AAAAASUVORK5CYII=" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAW5JREFUSEvFlc1NBDEMhd82wRWoBLhwpwAEVAKIQoAyOAGV8HPhTAWwH/IbWRPPbFZotJFWq1Ecv5/YzkoLr9XC+bUzgANJF5KO4zcl9D02XiTdSvL3EF8puJR0HxEc4PDcggxEiH0IoEkAgt8i6ckW98O554i/yqTGCmCOgsNKbgF4Hoy/JZ1V5MYAsEdqxR7g/bUNsH0NO04lPUn6jD2rGM6PAX7iIDK9SIgyfM4LIneSviTtrVU/hk3E48Df6gGAFclvwg5XGN+ADMmCCEqHvJsAXFFOnhV4Dztcab7DWYCcbO7SXXFVfDfAdVgzVVXc2b8A8J47qCwyOAVBg7G6LCLYVeQK4t9dmi8Z73NJbw0Aq7kyJXmePxsBmkYJ6Z43R5HwI9mSK6tp1GpU4PuYWc9YclVli5tGc5DHRTN+J5CyjbkvygfHDZRnfc+4JiZXVDkq8vyhDO39HIDfDGZR83bs7MnsudSumMUV/AIe7GgZglVbgwAAAABJRU5ErkJggg==" /></i>
+                </a>
+                <a href="#">
+                    <i><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALhJREFUSEvtlMENgzAQBJdOKIVSQiWESkgnCZWEUsJItuQH9sknW8qD+wAS2jnP2R7UuYbO+fo7wChpkTRJ4v04ny9Ja85EzQoI/F4EAZhbAOj82RPwDmpgfELXKCpWjSL0oIliJVnvKdELwDnuzbIAcbcQtCVphO/hG11ZVRaA0IfRZlFXC0BRlwWIh4pFMOA4ZJRELQDcilI76S5qNuQbUHVd3zMwr5XuiswOrn6wTrIr1Htdu2A/WHsqGQUWIeAAAAAASUVORK5CYII=" /></i>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

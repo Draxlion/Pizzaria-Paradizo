@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Pizzaria Paradiso</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="../src/images/logo.png">
+    <script defer src="assets/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2 class="logo"><img src="assets/images/pizza.png" alt=""> Paradiso</h2>
+        <ul class="nav-links">
+            <li><a href="gerenciarClientes.html"><i class="bi bi-person-circle"></i><span>Cadastro de Cliente</span></a>
+            </li>
+            <li><a href="bucarCliente.html"><i class="bi bi-search"></i><span>Buscar Cliente</span></a></li>
+            <li><a href="catalogo_pizzas.html"><i class="bi bi-postcard-heart"></i><span>Catálogo de Pizza</span></a>
+            </li>
+            <li><a href="catalogo_bebidas.html"><i class="bi bi-postcard-heart"></i><span>Catálogo de Bebidas</span></a>
+            </li>
+            <li><a href="buscarPizzas.html"><i class="bi bi-search"></i><span>Buscar Pizzas</span></a></li>
+            <li><a href="buscarBebidas.html"><i class="bi bi-search"></i><span>Buscar Bebidas</span></a></li>
+            <li><a href="historico_clientes.html"><i class="bi bi-list-check"></i><span>Histórico de Clientes</span></a>
+            </li>
+            <li><a href="pedidos_em_atendimento.html"><i class="bi bi-cart4"></i><span>Pedidos</span></a></li>
+            <li><a href="../painelPizzaiolo.html"><i class="bi bi-columns-gap"></i><span>Painel Pizzaiolo</span></a>
+            </li>
+
+            <br>
+
+            <div class="postit">
+                <p>"O segredo está na massa!" 🍕<br>— Paradiso Team</p>
+            </div>
+        </ul>
+
+        <div class="sidebar-footer">
+            <img src="https://i.pravatar.cc/40" alt="Avatar" class="avatar">
+            <p>Bem-vindo novamente!</p>
+        </div>
+    </div>
+
+    <div class="main">
+        <header>
+            <h1>Visão Geral</h1>
+        </header>
+
+        <!-- Cards Resumo -->
+        <section class="cards">
+            <div class="card azul">
+                <h3>Total de Clientes</h3>
+                <p>4.984</p>
+            </div>
+            <div class="card verde">
+                <h3>Pedidos em Atendimento</h3>
+                <p>07</p>
+            </div>
+            <div class="card amarelo">
+                <h3>Pizzas no Catálogo</h3>
+                <p>16</p>
+            </div>
+            <div class="card rosa">
+                <h3>Pedidos Entregues</h3>
+                <p>8.531</p>
+            </div>
+        </section>
+
+        <!-- Nova Seção com Gráficos -->
+        <section class="cards-graficos">
+            <div class="card-grafico">
+                <div class="card-header">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h3>Crescimento de Clientes</h3>
+                </div>
+                <canvas id="graficoClientes"></canvas>
+                <div class="card-grafico">
+                    <div class="card-header">
+                        <i class="bi bi-people-fill"></i>
+                        <h3>Captação de Clientes</h3>
+                    </div>
+                    <canvas id="graficoCaptacaoClientes"></canvas>
+                </div>
+            </div>
+
+            <div class="card-grafico">
+                <div class="card-header">
+                    <i class="bi bi-bar-chart-line"></i>
+                    <h3>Vendas Mensais</h3>
+                </div>
+                <canvas id="graficoVendas"></canvas>
+                <div class="card-grafico">
+                    <div class="card-header">
+                        <i class="bi bi-cash-coin"></i>
+                        <h3>Capitalização Monetária</h3>
+                    </div>
+                    <canvas id="graficoCapitalizacao"></canvas>
+                </div>
+            </div>
+
+            <div class="card-grafico">
+                <div class="card-header">
+                    <i class="bi bi-box-seam"></i>
+                    <h3>Estoque de Ingredientes</h3>
+                </div>
+                <canvas id="graficoIngredientes"></canvas>
+                <div class="ingredientes-legenda">
+                    <div> <img src="assets/images/cheese.png" alt="Queijo">Queijo: <strong>50kg</strong></div>
+                    <div><img src="assets/images/tomato.png" alt="Molho"> Molho: <strong>30kg</strong></div>
+                    <div><img src="assets/images/wheat.png" alt="Farinha"> Farinha: <strong>40kg</strong></div>
+                    <div><img src="assets/images/ham.png" alt="Presunto"> Presunto: <strong>25kg</strong></div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        // Crescimento de Clientes
+        new Chart(document.getElementById('graficoClientes').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+                datasets: [{
+                    label: 'Clientes',
+                    data: [500, 1500, 1000, 2080, 2984],
+                    borderColor: '#007bff',
+                    backgroundColor: 'transparent',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        // Vendas Mensais
+        new Chart(document.getElementById('graficoVendas').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+                datasets: [{
+                    label: 'Vendas',
+                    data: [1715, 3800, 3610, 2250, 4584],
+                    backgroundColor: '#28a745'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Estoque de Ingredientes
+        new Chart(document.getElementById('graficoIngredientes').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Queijo', 'Molho', 'Farinha', 'Presunto'],
+                datasets: [{
+                    label: 'Estoque',
+                    data: [50, 30, 40, 25],
+                    backgroundColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Captação de Clientes
+new Chart(document.getElementById('graficoCaptacaoClientes').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Redes Sociais', 'Indicação', 'Website', 'Eventos'],
+        datasets: [{
+            label: 'Captações',
+            data: [15, 10, 8, 5],
+            backgroundColor: ['#007bff', '#6610f2', '#17a2b8', '#ffc107']
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true
+            }
+        }
+    }
+});
+
+// Capitalização Monetária
+new Chart(document.getElementById('graficoCapitalizacao').getContext('2d'), {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+        datasets: [{
+            label: 'Receita (R$)',
+            data: [5000, 7000, 6500, 8000, 9000],
+            borderColor: '#28a745',
+            backgroundColor: 'rgba(40, 167, 69, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true
+            }
+        }
+    }
+});
+
+    </script>
+</body>
+
+</html>

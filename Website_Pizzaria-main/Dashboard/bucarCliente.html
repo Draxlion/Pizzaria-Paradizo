@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontrar Cliente</title>
+    <link rel="stylesheet" href="assets/css/gerenciamento.css"/>
+    
+</head>
+<body>
+
+    <a href="dashboard.html" class="back-button">← Voltar</a>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar cliente por nome ou telefone..." />
+            <button onclick="buscarCliente()">Buscar</button>
+        </div>
+
+        <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="clientesList">
+            </tbody>
+          </table>
+        </div>
+    </div>  
+
+    
+
+    <script src="assets/js/gerenciarClientes.js"></script>
+</body>
+</html>

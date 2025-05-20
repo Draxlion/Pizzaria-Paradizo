@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Pizzas</title>
+   <link rel="stylesheet" href="assets/css/catalogo_pizzas.css">
+</head>
+<body>
+  <a href="dashboard.html" class="back-button">&larr; Voltar</a>
+  <div class="container">
+    <h1>Catálogo de Pizzas</h1>
+    <div class="search-bar">
+      <button class="add-button" onclick="abrirModalAdicionar()">Adicionar Pizza</button>
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Ingredientes</th>
+          <th>Preço</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="pizzaTableBody"></tbody>
+    </table>
+  </div>
+
+  <div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Editar Pizza</h2>
+      <label>Nome: <input type="text" id="editNome"></label>
+      <label>Ingredientes: <input type="text" id="editIngredientes"></label>
+      <label>Preço: <input type="text" id="editPreco"></label>
+      <div>
+        <button id="salvarEdicao">Salvar</button>
+        <button id="cancelarEdicao" onclick="fecharModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de Adicionar Pizza -->
+<div id="addModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Adicionar Nova Pizza</h2>
+    <label>Nome: <input type="text" id="addNome" /></label>
+    <label>Ingredientes: <input type="text" id="addIngredientes" /></label>
+    <label>Preço: <input type="text" id="addPreco" /></label>
+    <div>
+      <button onclick="adicionarPizza()" id="salvarNovaPizza">Salvar</button>
+      <button onclick="fecharModalAdicionar()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+  <script src="assets/js/catalogo_pizzas.js"> </script>
+</body>
+</html>
